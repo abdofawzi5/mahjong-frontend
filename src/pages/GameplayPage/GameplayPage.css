@@ -1,0 +1,131 @@
+.gameplay-page {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.game-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: var(--glass-bg);
+  padding: 1rem 2rem;
+  border-radius: 12px;
+  border: 1px solid var(--glass-border);
+}
+
+.stats-box {
+  display: flex;
+  gap: 2rem;
+}
+
+.stat {
+  font-size: 1.1rem;
+  font-weight: 500;
+}
+
+.stat .highlight {
+  color: var(--accent-color);
+  font-weight: bold;
+}
+
+.game-board {
+  display: flex;
+  justify-content: center;
+}
+
+.hands-area {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+  width: 100%;
+  max-width: 600px;
+}
+
+.hand-wrapper {
+  width: 100%;
+}
+
+.action-area {
+  text-align: center;
+  width: 100%;
+}
+
+.action-area h3 {
+  margin-bottom: 0.5rem;
+}
+
+.vs-text {
+  color: var(--text-secondary);
+  margin-bottom: 1.5rem;
+}
+
+.bet-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.history-panel {
+  margin-top: 2rem;
+}
+
+.history-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.history-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem;
+  border-radius: 8px;
+  background: rgba(255,255,255,0.05);
+}
+
+.result-win {
+  border-left: 4px solid var(--success);
+}
+
+.result-loss {
+  border-left: 4px solid var(--danger);
+}
+
+.result-tie {
+  border-left: 4px solid #f59e0b; /* amber */
+}
+
+.history-details {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.history-outcome {
+  font-size: 0.85rem;
+  font-weight: bold;
+  opacity: 0.8;
+}
+
+.history-score {
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+}
+
+.result-win .history-score { color: var(--success); }
+.result-loss .history-score { color: var(--danger); }
+.result-tie .history-score { color: #f59e0b; }
+
+.gameplay-content-panel {
+  width: 100%;
+  max-width: 800px;
+  padding: 2rem;
+}
+
+.gameplay-loading {
+  text-align: center;
+  padding: 2rem;
+}

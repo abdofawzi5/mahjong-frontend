@@ -1,0 +1,76 @@
+.landing-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.main-menu {
+  width: 100%;
+  max-width: 500px;
+  text-align: center;
+}
+
+.title {
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+  color: var(--accent-color);
+}
+
+.subtitle {
+  color: var(--text-secondary);
+  margin-bottom: 2rem;
+}
+
+.start-btn {
+  font-size: 1.2rem;
+  padding: 1rem 3rem;
+  margin-bottom: 3rem;
+  width: 100%;
+}
+
+.leaderboard-section {
+  text-align: left;
+  background: rgba(0,0,0,0.2);
+  padding: 1.5rem;
+  border-radius: 12px;
+}
+
+.leaderboard-section h2 {
+  margin-top: 0;
+  margin-bottom: 1rem;
+  font-size: 1.2rem;
+  border-bottom: 1px solid var(--glass-border);
+  padding-bottom: 0.5rem;
+}
+
+.leaderboard-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.leaderboard-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.75rem 0;
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+
+.leaderboard-item:last-child {
+  border-bottom: none;
+}
+
+.leaderboard-item .rank {
+  font-weight: bold;
+  color: var(--accent-color);
+  width: 30px;
+}
+
+.leaderboard-item .name {
+  flex: 1;
+}
+
+.leaderboard-item .score {
+  font-weight: 600;
+  color: var(--success);
+}

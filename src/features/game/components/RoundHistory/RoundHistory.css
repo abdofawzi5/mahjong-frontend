@@ -1,0 +1,109 @@
+.round-history-container {
+  margin-top: 2rem;
+}
+
+.round-history-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.round-history-title {
+  margin-bottom: 1rem;
+}
+
+.round-history-toggle {
+  background: transparent;
+  color: #2196f3;
+  border: 1px solid #2196f3;
+  padding: 0.25rem 0.75rem;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+
+.round-history-toggle:hover {
+  background: rgba(33, 150, 243, 0.1);
+}
+
+.round-history-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  max-height: 400px;
+  overflow-y: auto;
+  padding-right: 0.5rem;
+}
+
+.round-history-item {
+  background: rgba(255, 255, 255, 0.05);
+  padding: 1rem;
+  border-radius: 8px;
+}
+
+.round-history-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+  font-weight: bold;
+}
+
+.round-history-details {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.9rem;
+  color: #ccc;
+}
+
+.round-history-hands {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-top: 0.5rem;
+}
+
+.round-history-hand {
+  flex: 1;
+  background: rgba(0, 0, 0, 0.2);
+  padding: 0.5rem;
+  border-radius: 6px;
+}
+
+.round-history-hand-title {
+  font-size: 0.8rem;
+  color: #aaa;
+  margin-bottom: 0.25rem;
+}
+
+.round-history-tiles {
+  display: flex;
+  gap: 2px;
+  flex-wrap: wrap;
+}
+
+.round-history-empty {
+  color: #888;
+  font-style: italic;
+}
+
+.round-history-win {
+  color: #4caf50;
+}
+
+.round-history-loss {
+  color: #f44336;
+}
+
+.round-history-tie {
+  color: #ff9800;
+}
+
+.round-history-score-win {
+  color: #4caf50;
+}
+
+.round-history-score-loss {
+  color: #f44336;
+}
