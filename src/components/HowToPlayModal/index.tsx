@@ -9,22 +9,21 @@ export const HowToPlayModal = ({ isOpen, onClose }: HowToPlayModalProps) => {
   if (!isOpen) return null;
 
   return (
-    <div 
-      className="modal-overlay" 
-      onClick={onClose}
-      role="button"
-      tabIndex={0}
-      onKeyDown={(e) => {
-        if (e.key === 'Enter' || e.key === ' ') {
-          onClose();
-        }
-      }}
-    >
+    <div className="modal-overlay">
+      <div 
+        className="modal-backdrop"
+        role="button"
+        tabIndex={0}
+        onClick={onClose}
+        onKeyDown={(e) => {
+          if (e.key === 'Enter' || e.key === ' ') onClose();
+        }}
+        aria-label="Close modal"
+      />
       <div 
         className="modal-content" 
-        onClick={e => e.stopPropagation()}
-        role="presentation"
-        onKeyDown={(e) => e.stopPropagation()}
+        role="dialog"
+        aria-modal="true"
       >
         <h2 className="modal-title">How to Play</h2>
         

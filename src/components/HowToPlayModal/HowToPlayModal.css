@@ -12,6 +12,17 @@
   backdrop-filter: blur(4px);
 }
 
+.modal-backdrop {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  cursor: pointer;
+  border: none;
+  background: transparent;
+}
+
 .modal-content {
   background: #1e1e24;
   padding: 2.5rem;
