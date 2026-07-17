@@ -1,4 +1,4 @@
-import React, { type ReactNode } from 'react';
+import { type ReactNode } from 'react';
 import { ServicesContext, type IServicesContext } from './ServicesContext';
 
 export interface ServicesProviderProps {
@@ -6,7 +6,7 @@ export interface ServicesProviderProps {
   services: IServicesContext;
 }
 
-export const ServicesProvider: React.FC<ServicesProviderProps> = ({ children, services }) => {
+export const ServicesProvider = ({ children, services }: ServicesProviderProps) => {
   return (
     <ServicesContext.Provider value={services}>
       {children}

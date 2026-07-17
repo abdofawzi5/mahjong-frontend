@@ -4,7 +4,10 @@ import { ErrorBoundary } from './components/ErrorBoundary';
 import { ServicesProvider } from './contexts/ServicesProvider';
 import { GameStoreProvider } from './features/game/store/GameStoreProvider';
 import { LeaderboardService } from './features/leaderboard/services/LeaderboardService';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { apiClient } from './api/client';
+
+const queryClient = new QueryClient();
 
 const LandingPage = lazy(() => import('./pages/LandingPage'));
 const GameplayPage = lazy(() => import('./pages/GameplayPage'));
@@ -22,22 +25,24 @@ const PageLoader = () => (
 
 function App() {
   return (
-    <ErrorBoundary>
-      <ServicesProvider services={services}>
-        <GameStoreProvider>
-          <Router>
-            <Suspense fallback={<PageLoader />}>
-              <Routes>
-                <Route path="/" element={<LandingPage />} />
-                <Route path="/play" element={<GameplayPage />} />
-                <Route path="/game-over" element={<GameOverPage />} />
-                <Route path="*" element={<Navigate to="/" replace />} />
-              </Routes>
-            </Suspense>
-          </Router>
-        </GameStoreProvider>
-      </ServicesProvider>
-    </ErrorBoundary>
+    <QueryClientProvider client={queryClient}>
+      <ErrorBoundary>
+        <ServicesProvider services={services}>
+          <GameStoreProvider>
+            <Router>
+              <Suspense fallback={<PageLoader />}>
+                <Routes>
+                  <Route path="/" element={<LandingPage />} />
+                  <Route path="/play" element={<GameplayPage />} />
+                  <Route path="/game-over" element={<GameOverPage />} />
+                  <Route path="*" element={<Navigate to="/" replace />} />
+                </Routes>
+              </Suspense>
+            </Router>
+          </GameStoreProvider>
+        </ServicesProvider>
+      </ErrorBoundary>
+    </QueryClientProvider>
   );
 }
 

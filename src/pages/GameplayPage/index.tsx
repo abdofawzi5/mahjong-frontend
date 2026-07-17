@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useGame } from '../../features/game/hooks/useGame';
 import { GameHeader } from '../../features/game/components/GameHeader';
@@ -7,7 +7,7 @@ import { GameActionArea } from '../../features/game/components/GameActionArea';
 import { RoundHistory } from '../../features/game/components/RoundHistory';
 import './GameplayPage.css';
 
-const GameplayPage: React.FC = () => {
+const GameplayPage = () => {
   const navigate = useNavigate();
   const { currentHand, isGameOver } = useGame();
 

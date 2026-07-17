@@ -1,4 +1,3 @@
-import React from 'react';
 import type { HandData } from '../../types';
 import { Tile } from '../Tile';
 import { useGame } from '../../hooks/useGame';
@@ -10,7 +9,7 @@ interface HandProps {
   hidden?: boolean;
 }
 
-export const Hand: React.FC<HandProps> = ({ hand, title, hidden = false }) => {
+export const Hand = ({ hand, title, hidden = false }: HandProps) => {
   const { dynamicValues } = useGame();
   
   return (

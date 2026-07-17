@@ -4,7 +4,7 @@ import { useGame } from '../../features/game/hooks/useGame';
 import { useLeaderboard } from '../../features/leaderboard/hooks/useLeaderboard';
 import './GameOverPage.css';
 
-const GameOverPage: React.FC = () => {
+const GameOverPage = () => {
   const navigate = useNavigate();
   const { score, gameOverReason } = useGame();
   const [playerName, setPlayerName] = useState('');

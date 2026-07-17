@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { useGame } from '../../hooks/useGame';
 import { HelpCircle } from 'lucide-react';
 import { HowToPlayModal } from '../../../../components/HowToPlayModal';
@@ -13,14 +13,14 @@ export interface GameHeaderViewProps {
   onEndGame: (reason: string) => void;
 }
 
-export const GameHeaderView: React.FC<GameHeaderViewProps> = ({
+export const GameHeaderView = ({
   score,
   drawPileLength,
   discardPileLength,
   exhaustionCount,
   round,
   onEndGame,
-}) => {
+}: GameHeaderViewProps) => {
   const [isHelpOpen, setIsHelpOpen] = useState(false);
 
   return (
@@ -51,7 +51,7 @@ export const GameHeaderView: React.FC<GameHeaderViewProps> = ({
   );
 };
 
-export const GameHeader: React.FC = () => {
+export const GameHeader = () => {
   const { score, drawPile, discardPile, exhaustionCount, history, endGame } = useGame();
   
   return (

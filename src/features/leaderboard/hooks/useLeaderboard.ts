@@ -1,41 +1,44 @@
-import { useState, useCallback } from 'react';
-import type { LeaderboardEntry } from '../services/LeaderboardService';
-import { useAsyncError } from '../../../hooks/useAsyncError';
+import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 import { useServices } from '../../../contexts/ServicesContext';
+import { useAsyncError } from '../../../hooks/useAsyncError';
 
 export const useLeaderboard = () => {
   const { leaderboardService } = useServices();
-  const [leaderboard, setLeaderboard] = useState<LeaderboardEntry[]>([]);
-  const [loading, setLoading] = useState(true);
+  const queryClient = useQueryClient();
   const throwError = useAsyncError();
-  const [submitting, setSubmitting] = useState(false);
-  const [submitted, setSubmitted] = useState(false);
 
-  const fetchLeaderboard = useCallback(async () => {
-    setLoading(true);
-    try {
-      const data = await leaderboardService.getLeaderboard();
-      setLeaderboard(data);
-    } catch (err) {
+  const { 
+    data: leaderboard = [], 
+    isLoading: loading, 
+    refetch: fetchLeaderboard 
+  } = useQuery({
+    queryKey: ['leaderboard'],
+    queryFn: () => leaderboardService.getLeaderboard(),
+  });
+
+  const { 
+    mutateAsync: submitScoreMutate, 
+    isPending: submitting, 
+    isSuccess: submitted 
+  } = useMutation({
+    mutationFn: ({ name, score }: { name: string; score: number }) => 
+      leaderboardService.submitScore(name, score),
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ['leaderboard'] });
+    },
+    onError: (err) => {
       throwError(err as Error);
-    } finally {
-      setLoading(false);
     }
-  }, [throwError, leaderboardService]);
+  });
 
-  const submitScore = useCallback(async (name: string, score: number) => {
-    setSubmitting(true);
+  const submitScore = async (name: string, score: number) => {
     try {
-      await leaderboardService.submitScore(name, score);
-      setSubmitted(true);
+      await submitScoreMutate({ name, score });
       return true;
-    } catch (err) {
-      throwError(err as Error);
+    } catch {
       return false;
-    } finally {
-      setSubmitting(false);
     }
-  }, [throwError, leaderboardService]);
+  };
 
   return {
     leaderboard,

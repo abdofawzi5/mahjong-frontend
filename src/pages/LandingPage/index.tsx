@@ -1,18 +1,13 @@
-import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useLeaderboard } from '../../features/leaderboard/hooks/useLeaderboard';
 import { useGame } from '../../features/game/hooks/useGame';
 import './LandingPage.css';
 
-const LandingPage: React.FC = () => {
+const LandingPage = () => {
   const navigate = useNavigate();
   const { startGame } = useGame();
   
-  const { leaderboard, loading, fetchLeaderboard } = useLeaderboard();
-
-  useEffect(() => {
-    fetchLeaderboard();
-  }, [fetchLeaderboard]);
+  const { leaderboard, loading } = useLeaderboard();
 
   const handleStartGame = () => {
     startGame();

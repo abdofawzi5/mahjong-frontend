@@ -1,4 +1,3 @@
-import React from 'react';
 import './HowToPlayModal.css';
 
 interface HowToPlayModalProps {
@@ -6,12 +5,27 @@ interface HowToPlayModalProps {
   onClose: () => void;
 }
 
-export const HowToPlayModal: React.FC<HowToPlayModalProps> = ({ isOpen, onClose }) => {
+export const HowToPlayModal = ({ isOpen, onClose }: HowToPlayModalProps) => {
   if (!isOpen) return null;
 
   return (
-    <div className="modal-overlay" onClick={onClose}>
-      <div className="modal-content" onClick={e => e.stopPropagation()}>
+    <div 
+      className="modal-overlay" 
+      onClick={onClose}
+      role="button"
+      tabIndex={0}
+      onKeyDown={(e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          onClose();
+        }
+      }}
+    >
+      <div 
+        className="modal-content" 
+        onClick={e => e.stopPropagation()}
+        role="presentation"
+        onKeyDown={(e) => e.stopPropagation()}
+      >
         <h2 className="modal-title">How to Play</h2>
         
         <p>

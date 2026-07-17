@@ -1,10 +1,9 @@
-import React from 'react';
 import { useGame } from '../../hooks/useGame';
 import { Hand } from '../Hand';
 import { TrendingUp, TrendingDown } from 'lucide-react';
 import './GameActionArea.css';
 
-export const GameActionArea: React.FC = () => {
+export const GameActionArea = () => {
   const { nextHand, bet, isGameOver } = useGame();
 
   if (!nextHand || isGameOver) return null;

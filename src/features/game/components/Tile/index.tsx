@@ -1,4 +1,3 @@
-import React from 'react';
 import type { Tile as TileType } from '../../types';
 import './Tile.css';
 
@@ -7,7 +6,7 @@ interface TileProps {
   currentValue?: number;
 }
 
-export const Tile: React.FC<TileProps> = ({ tile, currentValue }) => {
+export const Tile = ({ tile, currentValue }: TileProps) => {
   const faceClass = tile.faceClass || 'tile-number';
   const display = tile.display || tile.type;
 

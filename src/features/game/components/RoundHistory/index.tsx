@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { useGame } from '../../hooks/useGame';
 import { TrendingUp, TrendingDown, Minus } from 'lucide-react';
 import { TILE_CONFIG } from '../../config/tiles.config';
@@ -13,7 +13,7 @@ const getTileChar = (t: {category: string, type: string}) => {
   return tileCharDict[`${t.category}-${t.type}`] || '?';
 };
 
-export const RoundHistory: React.FC = () => {
+export const RoundHistory = () => {
   const { history } = useGame();
   const [isExpanded, setIsExpanded] = useState(true);
 

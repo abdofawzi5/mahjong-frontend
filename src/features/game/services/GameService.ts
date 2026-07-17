@@ -93,16 +93,14 @@ export class GameService {
     });
 
     uniqueDynamicKeys.forEach(key => {
-      if (isCorrect) {
-        newDynamicValues[key] += 1;
-      } else {
-        newDynamicValues[key] -= 1;
-      }
+      const currentVal = newDynamicValues[key] ?? 5;
+      const nextVal = isCorrect ? currentVal + 1 : currentVal - 1;
+      newDynamicValues[key] = nextVal;
 
-      if (newDynamicValues[key] <= GAME_CONFIG.minDynamicValue) {
+      if (nextVal <= GAME_CONFIG.minDynamicValue) {
         const [category, type] = key.split('_');
         gameEndingReason = `Tile value reached ${GAME_CONFIG.minDynamicValue} for ${category} ${type}.`;
-      } else if (newDynamicValues[key] >= GAME_CONFIG.maxDynamicValue) {
+      } else if (nextVal >= GAME_CONFIG.maxDynamicValue) {
         const [category, type] = key.split('_');
         gameEndingReason = `Tile value reached ${GAME_CONFIG.maxDynamicValue} for ${category} ${type}.`;
       }

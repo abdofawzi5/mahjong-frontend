@@ -27,7 +27,9 @@ export const shuffleDeck = (deck: Tile[]): Tile[] => {
   const newDeck = [...deck];
   for (let i = newDeck.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
-    [newDeck[i], newDeck[j]] = [newDeck[j], newDeck[i]];
+    const temp = newDeck[i] as Tile;
+    newDeck[i] = newDeck[j] as Tile;
+    newDeck[j] = temp;
   }
   return newDeck;
 };

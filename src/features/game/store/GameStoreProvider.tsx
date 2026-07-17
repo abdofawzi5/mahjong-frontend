@@ -1,4 +1,4 @@
-import React, { useState, type ReactNode } from 'react';
+import { useState, type ReactNode } from 'react';
 import { createGameStore, GameStoreContext, type GameStoreApi } from './gameStore';
 
 export interface GameStoreProviderProps {
@@ -6,7 +6,7 @@ export interface GameStoreProviderProps {
   store?: GameStoreApi;
 }
 
-export const GameStoreProvider: React.FC<GameStoreProviderProps> = ({ children, store }) => {
+export const GameStoreProvider = ({ children, store }: GameStoreProviderProps) => {
   const [storeInstance] = useState(() => store ?? createGameStore());
   
   return (
