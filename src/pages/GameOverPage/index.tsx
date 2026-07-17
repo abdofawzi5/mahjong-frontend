@@ -44,7 +44,11 @@ const GameOverPage: React.FC = () => {
               maxLength={20}
               required
             />
-            <button type="submit" className="btn btn-success" disabled={submitting || !playerName.trim()}>
+            <button 
+              type="submit" 
+              className="btn btn-success" 
+              disabled={submitting || !playerName.trim()}
+            >
               {submitting ? 'Submitting...' : 'Submit Score'}
             </button>
           </form>

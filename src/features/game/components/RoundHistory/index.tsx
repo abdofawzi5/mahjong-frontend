@@ -4,8 +4,13 @@ import { TrendingUp, TrendingDown, Minus } from 'lucide-react';
 import { TILE_CONFIG } from '../../config/tiles.config';
 import './RoundHistory.css';
 
+const tileCharDict = TILE_CONFIG.allTiles.reduce((acc, tc) => {
+  acc[`${tc.category}-${tc.type}`] = tc.character;
+  return acc;
+}, {} as Record<string, string>);
+
 const getTileChar = (t: {category: string, type: string}) => {
-  return TILE_CONFIG.allTiles.find(tc => tc.category === t.category && tc.type === t.type)?.character || '?';
+  return tileCharDict[`${t.category}-${t.type}`] || '?';
 };
 
 export const RoundHistory: React.FC = () => {
@@ -33,9 +38,19 @@ export const RoundHistory: React.FC = () => {
           <div className="round-history-list">
             {history.map((round, idx) => {
               const BetIcon = round.bet === 'higher' ? TrendingUp : TrendingDown;
-              const resultClass = round.result === 'win' ? 'round-history-win' : round.result === 'loss' ? 'round-history-loss' : 'round-history-tie';
-              const scoreClass = round.scoreChange > 0 ? 'round-history-score-win' : 'round-history-score-loss';
-              const ResultIcon = round.result === 'win' ? TrendingUp : round.result === 'loss' ? TrendingDown : Minus;
+              const resultClass = round.result === 'win' 
+                ? 'round-history-win' 
+                : round.result === 'loss' 
+                  ? 'round-history-loss' 
+                  : 'round-history-tie';
+              const scoreClass = round.scoreChange > 0 
+                ? 'round-history-score-win' 
+                : 'round-history-score-loss';
+              const ResultIcon = round.result === 'win' 
+                ? TrendingUp 
+                : round.result === 'loss' 
+                  ? TrendingDown 
+                  : Minus;
 
               return (
                 <div key={idx} className="round-history-item">
@@ -49,17 +64,25 @@ export const RoundHistory: React.FC = () => {
                   </div>
                   <div className="round-history-details">
                     Bet: {round.bet} <BetIcon size={14} /> | 
-                    Result: {round.revealedHand.totalValue > round.previousHand.totalValue ? 'higher' : round.revealedHand.totalValue < round.previousHand.totalValue ? 'lower' : 'tie'} <ResultIcon size={14} />
+                    Result: {round.revealedHand.totalValue > round.previousHand.totalValue 
+                      ? 'higher' 
+                      : round.revealedHand.totalValue < round.previousHand.totalValue 
+                        ? 'lower' 
+                        : 'tie'} <ResultIcon size={14} />
                   </div>
                   <div className="round-history-hands">
                     <div className="round-history-hand">
-                      <div className="round-history-hand-title">Previous ({round.previousHand.totalValue})</div>
+                      <div className="round-history-hand-title">
+                        Previous ({round.previousHand.totalValue})
+                      </div>
                       <div className="round-history-tiles">
                         {round.previousHand.tiles.map((t, i) => <span key={i} title={`${t.category} ${t.type}`}>{getTileChar(t)}</span>)}
                       </div>
                     </div>
                     <div className="round-history-hand">
-                      <div className="round-history-hand-title">Next ({round.revealedHand.totalValue})</div>
+                      <div className="round-history-hand-title">
+                        Next ({round.revealedHand.totalValue})
+                      </div>
                       <div className="round-history-tiles">
                         {round.revealedHand.tiles.map((t, i) => <span key={i} title={`${t.category} ${t.type}`}>{getTileChar(t)}</span>)}
                       </div>

@@ -1,8 +1,10 @@
 import { useState, useCallback } from 'react';
-import { leaderboardService, type LeaderboardEntry } from '../services/LeaderboardService';
+import type { LeaderboardEntry } from '../services/LeaderboardService';
 import { useAsyncError } from '../../../hooks/useAsyncError';
+import { useServices } from '../../../contexts/ServicesContext';
 
 export const useLeaderboard = () => {
+  const { leaderboardService } = useServices();
   const [leaderboard, setLeaderboard] = useState<LeaderboardEntry[]>([]);
   const [loading, setLoading] = useState(true);
   const throwError = useAsyncError();
@@ -19,7 +21,7 @@ export const useLeaderboard = () => {
     } finally {
       setLoading(false);
     }
-  }, [throwError]);
+  }, [throwError, leaderboardService]);
 
   const submitScore = useCallback(async (name: string, score: number) => {
     setSubmitting(true);
@@ -33,7 +35,7 @@ export const useLeaderboard = () => {
     } finally {
       setSubmitting(false);
     }
-  }, [throwError]);
+  }, [throwError, leaderboardService]);
 
   return {
     leaderboard,

@@ -66,7 +66,10 @@ export class GameService {
   /**
    * Processes a user's bet and returns the next game state
    */
-  public static processBet(state: GameStateData, guess: 'higher' | 'lower'): Partial<GameStateData> {
+  public static processBet(
+    state: GameStateData, 
+    guess: 'higher' | 'lower'
+  ): Partial<GameStateData> {
     if (state.isGameOver || !state.currentHand || !state.nextHand) return {};
 
     const currentTotal = state.currentHand.totalValue;
@@ -141,7 +144,10 @@ export class GameService {
       history: [roundHistory, ...state.history],
       currentHand: { tiles: state.nextHand.tiles, totalValue: nextTotal },
       nextHand: newNextHandTiles.length > 0 
-        ? { tiles: newNextHandTiles, totalValue: calculateHandTotal(newNextHandTiles, newDynamicValues) } 
+        ? { 
+            tiles: newNextHandTiles, 
+            totalValue: calculateHandTotal(newNextHandTiles, newDynamicValues) 
+          } 
         : null,
       drawPile: newDrawPile,
       discardPile: newDiscardPile,

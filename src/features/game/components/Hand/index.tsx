@@ -20,12 +20,19 @@ export const Hand: React.FC<HandProps> = ({ hand, title, hidden = false }) => {
         {hand.tiles.map((tile, idx) => {
           if (hidden) {
             return (
-              <div key={idx} className="tile tile-hidden" title="Hidden Tile" data-name="Hidden Tile">
+              <div 
+                key={idx} 
+                className="tile tile-hidden" 
+                title="Hidden Tile" 
+                data-name="Hidden Tile"
+              >
                 <div className="tile-face">?</div>
               </div>
             );
           }
-          const val = tile.isDynamic ? dynamicValues[`${tile.category}_${tile.type}`] : tile.value;
+          const val = tile.isDynamic 
+            ? dynamicValues[`${tile.category}_${tile.type}`] 
+            : tile.value;
           return <Tile key={tile.id || idx} tile={tile} currentValue={val} />;
         })}
       </div>
