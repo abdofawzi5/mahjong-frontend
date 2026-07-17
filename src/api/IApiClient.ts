@@ -1,4 +1,4 @@
 export interface IApiClient {
-  get<T>(url: string, config?: any): Promise<{ data: T }>;
-  post<T>(url: string, data?: any, config?: any): Promise<{ data: T }>;
+  get<T>(url: string, config?: unknown): Promise<{ data: T }>;
+  post<T>(url: string, data?: unknown, config?: unknown): Promise<{ data: T }>;
 }
